@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_booking_hotel_app/signup/signup.dart';
 
 import 'auth/auth.dart';
 import 'home/home.dart';
@@ -65,7 +66,7 @@ class _AppViewState extends State<AppView> {
       debugShowCheckedModeBanner: false,
       title: 'Booking Hotel',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepOrange,
       ),
       navigatorKey: _navigatorKey,
       builder: (context, child) {
@@ -80,7 +81,7 @@ class _AppViewState extends State<AppView> {
                 break;
               case AuthenticationStatus.unauthenticated:
                 _navigator.pushAndRemoveUntil<void>(
-                  LoginPage.route(),
+                  SignupPage.route(),
                   (route) => false,
                 );
                 break;

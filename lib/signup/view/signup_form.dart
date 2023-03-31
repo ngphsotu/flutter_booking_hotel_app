@@ -1,18 +1,18 @@
-import 'package:flutter_booking_hotel_app/components/reuseduce_textformfield.dart';
 import 'package:formz/formz.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../login.dart';
-import '/signup/signup.dart';
+import '../signup.dart';
+import '/login/login.dart';
 import '/components/components.dart';
 
-class LoginForm extends StatelessWidget {
-  const LoginForm({super.key});
+class SignupForm extends StatelessWidget {
+  const SignupForm({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<LoginBloc, LoginState>(
+    return BlocListener<SignupBloc, SignupState>(
       listener: (context, state) {
         if (state.status.isSubmissionFailure) {
           ScaffoldMessenger.of(context)
@@ -28,23 +28,28 @@ class LoginForm extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _UsernameInput(),
+            _SignupNameInput(),
             const SizedBox(height: 20),
-            _PasswordInput(),
+            _SignupPhoneInput(),
+            const SizedBox(height: 20),
+            _SignupUsernameInput(),
+            const SizedBox(height: 20),
+            _SignupPasswordInput(),
             const SizedBox(height: 30),
-            Center(child: _LoginButton()),
+            Center(child: _SignupButton()),
+            const SizedBox(height: 5),
             const Divider(),
             TextAndButton(
               // onpressed: () {
               //   Navigator.push(
               //     context,
-              //     MaterialPageRoute(builder: (context) => const SignupPage()),
+              //     MaterialPageRoute(builder: (context) => const LoginPage()),
               //   );
               // },
               onpressed: () {
                 Navigator.of(context).push(_createRoute());
               },
-              textbutton: 'Signup',
+              textbutton: 'Sign up',
               textalready: 'Don\'t have any account ?',
             ),
           ],
@@ -56,7 +61,7 @@ class LoginForm extends StatelessWidget {
 
 Route _createRoute() {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => const SignupPage(),
+    pageBuilder: (context, animation, secondaryAnimation) => const LoginPage(),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       const begin = Offset(0.0, 1.0);
       const end = Offset.zero;
@@ -72,20 +77,66 @@ Route _createRoute() {
   );
 }
 
-class _UsernameInput extends StatelessWidget {
+class _SignupNameInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginBloc, LoginState>(
+    return TextFormField(
+      key: const Key('signupForm_nameInput_textField'),
+      decoration: InputDecoration(
+        labelText: 'Name',
+        prefixIcon: const Icon(Icons.person),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(color: Colors.grey),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(color: Colors.grey),
+        ),
+      ),
+    );
+  }
+}
+
+class _SignupPhoneInput extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      key: const Key('signupForm_phoneInput_textField'),
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly,
+      ],
+      decoration: InputDecoration(
+        labelText: 'Phone',
+        prefixIcon: const Icon(Icons.phone),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(color: Colors.grey),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(color: Colors.deepOrange),
+        ),
+      ),
+    );
+  }
+}
+
+class _SignupUsernameInput extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SignupBloc, SignupState>(
       buildWhen: (previous, current) => previous.username != current.username,
       builder: (context, state) {
         return TextFormField(
-          key: const Key('loginForm_usernameInput_textField'),
+          key: const Key('signupForm_usernameInput_textField'),
           onChanged: (username) =>
-              context.read<LoginBloc>().add(LoginUsernameChanged(username)),
+              context.read<SignupBloc>().add(SignupUsernameChanged(username)),
           decoration: InputDecoration(
             labelText: 'Email',
             errorText: state.username.invalid ? 'invalid username' : null,
-            prefixIcon: const Icon(Icons.person),
+            prefixIcon: const Icon(Icons.mail),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: const BorderSide(color: Colors.grey),
@@ -101,16 +152,16 @@ class _UsernameInput extends StatelessWidget {
   }
 }
 
-class _PasswordInput extends StatelessWidget {
+class _SignupPasswordInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginBloc, LoginState>(
+    return BlocBuilder<SignupBloc, SignupState>(
       buildWhen: (previous, current) => previous.password != current.password,
       builder: (context, state) {
         return TextFormField(
-          key: const Key('loginForm_passwordInput_textField'),
+          key: const Key('signupForm_passwordInput_textField'),
           onChanged: (password) =>
-              context.read<LoginBloc>().add(LoginPasswordChanged(password)),
+              context.read<SignupBloc>().add(SignupPasswordChanged(password)),
           obscureText: true,
           decoration: InputDecoration(
             labelText: 'Password',
@@ -131,10 +182,10 @@ class _PasswordInput extends StatelessWidget {
   }
 }
 
-class _LoginButton extends StatelessWidget {
+class _SignupButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginBloc, LoginState>(
+    return BlocBuilder<SignupBloc, SignupState>(
       buildWhen: (previous, current) => previous.status != current.status,
       builder: (context, state) {
         return state.status.isSubmissionInProgress
@@ -146,7 +197,7 @@ class _LoginButton extends StatelessWidget {
                         context.read<LoginBloc>().add(const LoginSubmitted());
                       }
                     : null,
-                child: const Text('Login'),
+                child: const Text('Sign Up'),
               );
       },
     );
