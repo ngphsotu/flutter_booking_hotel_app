@@ -130,9 +130,9 @@ class _BookingPageState extends State<BookingPage> {
                               ),
                             ),
                             const SizedBox(height: 15),
-                            Row(
+                            const Row(
                               mainAxisAlignment: MainAxisAlignment.start,
-                              children: const [
+                              children: [
                                 Icon(Icons.star, color: Colors.yellow),
                                 Icon(Icons.star, color: Colors.yellow),
                                 Icon(Icons.star, color: Colors.yellow),

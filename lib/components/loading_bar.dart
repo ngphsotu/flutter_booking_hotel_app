@@ -11,9 +11,9 @@ class LoadingBar extends StatelessWidget {
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
       color: Colors.grey.withOpacity(.3),
-      child: Column(
+      child: const Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
+        children: [
           CircularProgressIndicator(
             backgroundColor: AppColors.transparent,
             valueColor: AlwaysStoppedAnimation<Color>(AppColors.primaryColor),

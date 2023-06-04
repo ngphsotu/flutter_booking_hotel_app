@@ -82,7 +82,7 @@ class ItemMyRoom extends StatelessWidget {
                                 },
                               ),
                             );
-                            hotelBloc.getMyRoom();
+                            // hotelBloc.getMyRoom();
                           },
                           child: const Icon(
                             Icons.mode_edit,

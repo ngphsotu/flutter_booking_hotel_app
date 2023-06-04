@@ -2,9 +2,9 @@
 
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:date_range_picker/date_range_picker.dart' as DateRagePicker;
 
 import '/ui/ui.dart';
 import '../my_hotel.dart';
@@ -354,20 +354,17 @@ class _NewRoomState extends State<NewRoom> {
                         ),
                         GestureDetector(
                           onTap: () async {
-                            final List<DateTime> picked =
-                                await DateRagePicker.showDatePicker(
+                            DateTime? picked = await showDatePicker(
                               context: context,
-                              initialFirstDate: DateTime.now(),
-                              initialLastDate:
-                                  (DateTime.now()).add(const Duration(days: 7)),
-                              firstDate: DateTime(2015),
-                              lastDate: DateTime(2025),
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime(1900),
+                              lastDate: DateTime(2100),
                             );
-                            if (picked.length == 2) {
-                              startDay = picked[0].toIso8601String() as int;
-                              endDay = picked[1].toIso8601String() as int;
-                              controllerFreeTime.text =
-                                  '${picked[0].day}/${picked[0].month}-${picked[1].day}/${picked[1].month}/${picked[0].year}';
+                            if (picked != null) {
+                              setState(() {
+                                controllerFreeTime.text =
+                                    DateFormat('dd-MM-yyyy').format(picked);
+                              });
                             }
                           },
                           child: Container(
@@ -380,20 +377,17 @@ class _NewRoomState extends State<NewRoom> {
                     ),
                     GestureDetector(
                       onTap: () async {
-                        final List<DateTime> picked =
-                            await DateRagePicker.showDatePicker(
-                                context: context,
-                                initialFirstDate: DateTime.now(),
-                                initialLastDate: (DateTime.now())
-                                    .add(const Duration(days: 7)),
-                                firstDate: DateTime(2015),
-                                lastDate: DateTime(2025));
-
-                        if (picked.length == 2) {
-                          startDay = picked[0].toIso8601String() as int;
-                          endDay = picked[1].toIso8601String() as int;
-                          controllerFreeTime.text =
-                              '${picked[0].day}/${picked[0].month}-${picked[1].day}/${picked[1].month}/${picked[0].year}';
+                        DateTime? picked = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(1900),
+                          lastDate: DateTime(2100),
+                        );
+                        if (picked != null) {
+                          setState(() {
+                            controllerFreeTime.text =
+                                DateFormat('dd-MM-yyyy').format(picked);
+                          });
                         }
                       },
                       child: ReuseduceTextFormField(

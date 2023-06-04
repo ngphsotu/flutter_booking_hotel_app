@@ -22,15 +22,22 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   void didChangeDependencies() async {
+    final navigatorloginpage = Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) {
+        return const LoginPage();
+      }),
+    );
+    final navigatorhomepage = Navigator.pushReplacement(context,
+        MaterialPageRoute(builder: (context) {
+      return const HomePage();
+    }));
+
     prefs = await SharedPreferences.getInstance();
     if (prefs.getString("uid") == null || prefs.getString("uid") == "") {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-        return const LoginPage();
-      }));
+      navigatorloginpage;
     } else {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-        return const HomePage();
-      }));
+      navigatorhomepage;
       AccountUtils().setAccount(uid1: prefs.getString("uid").toString());
     }
     super.didChangeDependencies();

@@ -1,8 +1,8 @@
 import 'package:rxdart/rxdart.dart';
 
 import '/model/model.dart';
-import '../../fire_auth/fire_auth.dart';
 import '/components/components.dart';
+import '../../fire_auth/fire_auth.dart';
 
 class HotelBloc extends BaseBloc {
   BehaviorSubject<MyHotel> myHotelStream = BehaviorSubject();
@@ -12,7 +12,7 @@ class HotelBloc extends BaseBloc {
   @override
   void init() {
     getMyHotel();
-    getMyRoom();
+    // getMyRoom();
   }
 
   @override
@@ -37,14 +37,14 @@ class HotelBloc extends BaseBloc {
   }
 
   // Get My Room
-  void getMyRoom() async {
-    try {
-      listRoomStream.add([]);
-      FireAuth().getListRoomByID((val) {
-        listRoomStream.add(val);
-      });
-    } catch (e) {
-      FlutterToast().showToast(e.toString());
-    }
-  }
+  // void getMyRoom() async {
+  //   try {
+  //     listRoomStream.add([]);
+  //     FireAuth().getListRoomByID((val) {
+  //       listRoomStream.add(val);
+  //     });
+  //   } catch (e) {
+  //     FlutterToast().showToast(e.toString());
+  //   }
+  // }
 }

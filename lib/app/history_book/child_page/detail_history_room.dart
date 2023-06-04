@@ -127,14 +127,14 @@ class _DetailHomeStayScreenState extends State<DetailsRoomHistoryPage> {
                         ],
                       ),
                       const SizedBox(height: 10),
-                      Row(
+                      const Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Expanded(
                             flex: 2,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
-                              children: const [
+                              children: [
                                 Icon(Icons.star, color: Colors.yellow),
                                 Text(
                                   '4.5',
@@ -143,7 +143,7 @@ class _DetailHomeStayScreenState extends State<DetailsRoomHistoryPage> {
                               ],
                             ),
                           ),
-                          const Expanded(
+                          Expanded(
                             flex: 3,
                             child: Text(
                               '420 Reviews',
@@ -163,9 +163,9 @@ class _DetailHomeStayScreenState extends State<DetailsRoomHistoryPage> {
                           color: AppColors.grey.withOpacity(.3),
                           borderRadius: BorderRadius.circular(25),
                         ),
-                        child: Row(
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
+                          children: [
                             ItemDetailsTax(
                               title: 'Per night',
                               price: 230,

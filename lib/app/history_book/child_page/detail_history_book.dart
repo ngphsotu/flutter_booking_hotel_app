@@ -106,13 +106,13 @@ class _BookingScreenState extends State<DetailsHistoryBookPage> {
                         ),
                       ),
                     ),
-                    Expanded(
+                    const Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 5, 0, 5),
+                        padding: EdgeInsets.fromLTRB(10, 5, 0, 5),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
+                            Text(
                               'Room 2 person',
                               style: TextStyle(
                                 fontWeight: FontWeight.w800,
@@ -120,10 +120,10 @@ class _BookingScreenState extends State<DetailsHistoryBookPage> {
                                 letterSpacing: 1,
                               ),
                             ),
-                            const SizedBox(height: 15),
+                            SizedBox(height: 15),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
-                              children: const [
+                              children: [
                                 Icon(Icons.star, color: Colors.yellow),
                                 Text(
                                   '4.5',
@@ -141,12 +141,12 @@ class _BookingScreenState extends State<DetailsHistoryBookPage> {
                 ),
               ),
               const SizedBox(height: 35),
-              SizedBox(
+              const SizedBox(
                 height: 65,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     ItemService(
                       title: 'Wifi',
                       widget: Icon(
@@ -185,12 +185,12 @@ class _BookingScreenState extends State<DetailsHistoryBookPage> {
                   ],
                 ),
               ),
-              Row(
+              const Row(
                 children: [
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
                           'Check-in',
                           style: TextStyle(
@@ -210,11 +210,11 @@ class _BookingScreenState extends State<DetailsHistoryBookPage> {
                       ],
                     ),
                   ),
-                  const SizedBox(width: 15),
+                  SizedBox(width: 15),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
                           'Check-out',
                           style: TextStyle(
@@ -237,12 +237,12 @@ class _BookingScreenState extends State<DetailsHistoryBookPage> {
                 ],
               ),
               const SizedBox(height: 15),
-              Row(
+              const Row(
                 children: [
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
                           'Night',
                           style: TextStyle(
@@ -262,11 +262,11 @@ class _BookingScreenState extends State<DetailsHistoryBookPage> {
                       ],
                     ),
                   ),
-                  const SizedBox(width: 15),
+                  SizedBox(width: 15),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
                           'Number room',
                           style: TextStyle(
@@ -319,11 +319,11 @@ class _BookingScreenState extends State<DetailsHistoryBookPage> {
                   letterSpacing: 1,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(10, 10, 0, 10),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(10, 10, 0, 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     ItemDetailsTax(
                       title: 'Per night',
                       price: 230,
@@ -361,11 +361,11 @@ class _BookingScreenState extends State<DetailsHistoryBookPage> {
               ),
               const Divider(color: Colors.grey, height: 5),
               const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
+              const Padding(
+                padding: EdgeInsets.only(left: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
+                  children: [
                     Text(
                       'Total',
                       style: TextStyle(

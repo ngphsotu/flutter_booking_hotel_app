@@ -1,8 +1,8 @@
 // ignore_for_file: import_of_legacy_library_into_null_safe, library_prefixes
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:date_range_picker/date_range_picker.dart' as DateRagePicker;
 
 import '/ui/ui.dart';
 import '../home.dart';
@@ -393,23 +393,18 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 GestureDetector(
                                   onTap: () async {
-                                    final List<DateTime> picked =
-                                        await DateRagePicker.showDatePicker(
+                                    DateTime? picked = await showDatePicker(
                                       context: context,
-                                      initialFirstDate: DateTime.now(),
-                                      initialLastDate: (DateTime.now()).add(
-                                        const Duration(days: 7),
-                                      ),
-                                      firstDate: DateTime(2015),
-                                      lastDate: DateTime(2025),
+                                      initialDate: DateTime.now(),
+                                      firstDate: DateTime(1900),
+                                      lastDate: DateTime(2100),
                                     );
-                                    if (picked.length == 2) {
-                                      startDay =
-                                          picked[0].toIso8601String() as int;
-                                      endDay =
-                                          picked[1].toIso8601String() as int;
-                                      controllerTime.text =
-                                          '${picked[0].day}/${picked[0].month}-${picked[1].day}/${picked[1].month}/${picked[0].year}';
+                                    if (picked != null) {
+                                      setState(() {
+                                        controllerTime.text =
+                                            DateFormat('dd-MM-yyyy')
+                                                .format(picked);
+                                      });
                                     }
                                   },
                                   child: Container(

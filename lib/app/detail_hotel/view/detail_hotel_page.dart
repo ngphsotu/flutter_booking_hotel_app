@@ -138,10 +138,10 @@ class _DetailHotelPageState extends State<DetailHotelPage> {
                             ],
                           ),
                           const SizedBox(height: 10),
-                          Row(
+                          const Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              const Expanded(
+                              Expanded(
                                 flex: 3,
                                 child: Text(
                                   '420 Reviews',
@@ -156,7 +156,7 @@ class _DetailHotelPageState extends State<DetailHotelPage> {
                                 flex: 2,
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
-                                  children: const [
+                                  children: [
                                     Icon(Icons.star, color: Colors.yellow),
                                     Icon(Icons.star, color: Colors.yellow),
                                     Icon(Icons.star, color: Colors.yellow),

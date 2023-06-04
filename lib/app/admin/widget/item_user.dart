@@ -143,8 +143,8 @@ class ItemUser extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 5),
-                  Row(
-                    children: const [
+                  const Row(
+                    children: [
                       Text(
                         'Create:',
                         maxLines: 1,
